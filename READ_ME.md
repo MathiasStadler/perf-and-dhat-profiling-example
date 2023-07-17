@@ -25,3 +25,11 @@ rustup default nightly
 rustup default stable
 
 ```
+
+## Show which toolchain will be used in the current directory
+
+[[from here](https://rust-lang.github.io/rustup/examples.html)]
+
+```bash
+rustup show
+```
