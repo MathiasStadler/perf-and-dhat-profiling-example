@@ -33,3 +33,11 @@ rustup default stable
 ```bash
 rustup show
 ```
+
+## Keeping Rust up to date stable and nightly
+
+[[from here](https://rust-lang.github.io/rustup/basics.html)]
+
+```bash
+rustup update
+```
