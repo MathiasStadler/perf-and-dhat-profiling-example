@@ -8,3 +8,14 @@ edition = "2021"
 [dependencies]
 csv = "1.2.2"
 dhat = "0.3.2"
+
+[profile.release]
+incremental = true
+debug = true
+#lto = "fat"
+#codegen-units = 1
+
+[features]
+default = []
+dhat-on = []
+
