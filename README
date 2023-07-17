@@ -41,3 +41,9 @@ rustup show
 ```bash
 rustup update
 ```
+
+## install ubuntu perf (cli)
+
+```bash
+sudo apt install linux-intel-iotg-tools-common
+```
