@@ -82,7 +82,7 @@ sudo apt install linux-tools-5.19.0-46-generic linux-cloud-tools-5.19.0-46-gener
 echo -1 | sudo tee /proc/sys/kernel/perf_event_paranoid
 ```
 
-## test perf stat s. webpage
+## test perf stat s. [webpage](https://www.justanotherdot.com/posts/profiling-with-perf-and-dhat-on-rust-code-in-linux.html) and look for "Describing key metrics with perf stat"
 
 ```bash
 perf stat -ad -r 100 target/release/perf-and-dhat-profiling-example test.csv 
