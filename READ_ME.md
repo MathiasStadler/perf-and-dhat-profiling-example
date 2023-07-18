@@ -96,3 +96,17 @@ perf stat -ad -r 100 target/release/perf-and-dhat-profiling-example test.csv
 ### output
 
 ![alt text for screen readers]( md_parts/perf-output.png "Text to show on mouseover")
+
+### Digging deeper with perf record and perf report
+
+```bash
+perf record \
+-e L1-dcache-loads,LLC-load-misses \
+--call-graph dwarf \
+-- target/release/perf-and-dhat-profiling-example \
+test.csv
+```
+
+> **Warning** This is a warning
+
+> **Error** Invalid event (LLC-load-misses) in per-thread mode, enable system wide with '-a'
