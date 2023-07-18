@@ -67,10 +67,10 @@ sudo apt install linux-tools-common
 
 check so
 >
-> echo linux-tools-$(uname -r)
-> apt-cache show linux-tools-$(uname -r)
-> echo linux-cloud-tools-$(uname -r)
-> apt-cache show linux-cloud-tools-$(uname -r)
+> echo linux-tools-$(uname -r) \
+> apt-cache show linux-tools-$(uname -r) \
+> echo linux-cloud-tools-$(uname -r) \
+> apt-cache show linux-cloud-tools-$(uname -r) \
 
 ```bash
 sudo apt install linux-tools-5.19.0-46-generic linux-cloud-tools-5.19.0-46-generic
