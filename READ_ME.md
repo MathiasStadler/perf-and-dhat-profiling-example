@@ -101,6 +101,14 @@ perf stat -ad -r 100 target/release/perf-and-dhat-profiling-example test.csv
 
 ```bash
 perf record \
+-e L1-dcache-loads,LLC-load-misses \
+--call-graph dwarf \
+-- target/release/perf-and-dhat-profiling-example \
+test.csv
+```
+
+```bash
+perf record \
 -e L1-dcache-loads,LLC-loads \
 --call-graph dwarf \
 -- target/release/perf-and-dhat-profiling-example \
@@ -110,4 +118,3 @@ test.csv
 **Error**: Invalid event (LLC-load-misses) in per-thread mode, enable system wide with '-a'
 
 **Note**:  perf list always list all events defined in kernel.
-
