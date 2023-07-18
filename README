@@ -47,3 +47,38 @@ rustup update
 ```bash
 sudo apt install linux-intel-iotg-tools-common
 ```
+
+## if iotg version wrong on ubuntu
+
+> fix it
+
+```bash
+sudo apt purge --remove linux-intel-iotg-tools-common linux-tools-common linux-tools-5.15.0-76 linux-tools-5.15.0-76-generic  linux-tools-generic
+
+```
+
+## install standard version perf for ubuntu
+
+```bash
+sudo apt install linux-tools-common
+```
+
+## install additional package ATTENTION this package must match the installed kernel
+
+> check so
+> echo linux-tools-$(uname -r)
+> apt-cache show linux-tools-$(uname -r)
+> echo linux-cloud-tools-$(uname -r)
+> apt-cache show linux-cloud-tools-$(uname -r)
+
+```bash
+sudo apt install linux-tools-5.19.0-46-generic linux-cloud-tools-5.19.0-46-generic
+```
+
+
+
+
+
+
+##
+echo -1 | sudo tee /proc/sys/kernel/perf_event_paranoid
