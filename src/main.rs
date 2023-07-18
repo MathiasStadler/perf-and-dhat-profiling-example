@@ -38,10 +38,10 @@ pub fn read_file(data: &PathBuf) -> Result<Vec<u8>, Box<dyn Error>> {
 }
 
 pub fn read_csv(data: &[u8]) -> Result<Vec<Option<Field>>, Box<dyn Error>> {
-    let mut reader = Reader::from_reader(data);
-    let _headers = reader.headers().unwrap().clone().into_byte_record();
-    let mut fields = vec![];
-    let mut record = csv::ByteRecord::new();
+    let mut reader: Reader<&[u8]> = Reader::from_reader(data);
+    let _headers: csv::ByteRecord = reader.headers().unwrap().clone().into_byte_record();
+    let mut fields: Vec<Option<Field>> = vec![];
+    let mut record: csv::ByteRecord = csv::ByteRecord::new();
     while !reader.is_done() {
         reader.read_byte_record(&mut record).unwrap();
         for value in record.iter() {
@@ -52,7 +52,7 @@ pub fn read_csv(data: &[u8]) -> Result<Vec<Option<Field>>, Box<dyn Error>> {
 }
 
 fn parse(bytes: &[u8]) -> Option<Field> {
-    let string = match std::str::from_utf8(bytes) {
+    let string: &str = match std::str::from_utf8(bytes) {
         Ok(v) => v,
         Err(_) => return Some(Field::Unknown),
     };
@@ -89,7 +89,7 @@ fn main() {
     #[cfg(feature = "dhat-on")]
     let _dhat = Dhat::start_heap_profiling();
 
-    go("test.csv").unwrap_or_else(|e| {
+    go("test.csv").unwrap_or_else(|e: Box<dyn Error>| {
         eprintln!("[csv-count] {}", e);
         std::process::exit(1);
     });
