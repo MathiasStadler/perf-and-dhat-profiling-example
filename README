@@ -1,18 +1,20 @@
 # [in this repo will i follow this article](https://www.justanotherdot.com/posts/profiling-with-perf-and-dhat-on-rust-code-in-linux.html)
 
-## switch to nightly build
+## preparation
+
+### switch to nightly build
 
 ```bash
 rustup toolchain install  nightly-x86_64-unknown-linux-gnu
 ```
 
-## set another default
+### set another default
 
 ```bash
 rustup default nightly
 ```
 
-## switch from stable to nightly
+### switch from stable to nightly
 
 ```bash
 # show which  version is default
@@ -26,7 +28,7 @@ rustup default stable
 
 ```
 
-## Show which toolchain will be used in the current directory
+### Show which toolchain will be used in the current directory
 
 [[from here](https://rust-lang.github.io/rustup/examples.html)]
 
@@ -34,7 +36,7 @@ rustup default stable
 rustup show
 ```
 
-## Keeping Rust up to date stable and nightly
+### Keeping Rust up to date stable and nightly
 
 [[from here](https://rust-lang.github.io/rustup/basics.html)]
 
@@ -42,7 +44,7 @@ rustup show
 rustup update
 ```
 
-## install ubuntu perf (cli)
+### install ubuntu perf (cli)
 
 ```bash
 sudo apt install linux-intel-iotg-tools-common
@@ -57,13 +59,13 @@ sudo apt purge --remove linux-intel-iotg-tools-common linux-tools-common linux-t
 
 ```
 
-## install standard version perf for ubuntu
+### install standard version perf for ubuntu
 
 ```bash
 sudo apt install linux-tools-common
 ```
 
-## install additional package ATTENTION this package must match the installed kernel
+### install additional package ATTENTION this package must match the installed kernel
 
 check so
 >
@@ -76,19 +78,21 @@ check so
 sudo apt install linux-tools-5.19.0-46-generic linux-cloud-tools-5.19.0-46-generic
 ```
 
-## global setting for perf: Allow use of (almost) all events by all users Ignore mlock limit after perf_event_mlock_kb without CAP_IPC_LOCK
+## start with perf
+
+### global setting for perf: Allow use of (almost) all events by all users Ignore mlock limit after perf_event_mlock_kb without CAP_IPC_LOCK
 
 ```bash
 echo -1 | sudo tee /proc/sys/kernel/perf_event_paranoid
 ```
 
-## test perf stat s. [webpage](https://www.justanotherdot.com/posts/profiling-with-perf-and-dhat-on-rust-code-in-linux.html) and look for "Describing key metrics with perf stat"
+### test perf stat s. [webpage](https://www.justanotherdot.com/posts/profiling-with-perf-and-dhat-on-rust-code-in-linux.html) and look for "Describing key metrics with perf stat"
 
 ```bash
 perf stat -ad -r 100 target/release/perf-and-dhat-profiling-example test.csv 
 <snip, lots of output from the program itself>
 ```
 
-## output
+### output
 
 ![alt text for screen readers]( md_parts/perf-output.png "Text to show on mouseover")
