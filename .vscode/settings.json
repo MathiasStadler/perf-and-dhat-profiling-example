@@ -3,6 +3,7 @@
         "dcache",
         "dhat",
         "iotg",
-        "mlock"
+        "mlock",
+        "RUSTFLAGS"
     ]
 }

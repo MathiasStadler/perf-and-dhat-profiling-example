@@ -86,6 +86,25 @@ sudo apt install linux-tools-5.19.0-46-generic linux-cloud-tools-5.19.0-46-gener
 echo -1 | sudo tee /proc/sys/kernel/perf_event_paranoid
 ```
 
+```bash
+export RUSTFLAGS="-C target-cpu=native"
+echo $RUSTFLAGS
+```
+
+### hyperfine
+
+* We use the tool hyperfine to __compare__  multiple targets of measurement at the same time
+
+    -debug
+        * path/file: ```target/release/perf-and-dhat-profiling-example```
+
+    -release
+
+```bash
+hyperfine --show-output "target/debug/perf-and-dhat-profiling-example
+ test.csv" "target/release/perf-and-dhat-profiling-example test.csv"
+```
+
 ### test perf stat s. [webpage](https://www.justanotherdot.com/posts/profiling-with-perf-and-dhat-on-rust-code-in-linux.html) and look for "Describing key metrics with perf stat"
 
 ```bash
