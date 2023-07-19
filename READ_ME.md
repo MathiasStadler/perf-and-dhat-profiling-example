@@ -95,15 +95,37 @@ echo $RUSTFLAGS
 
 * We use the tool hyperfine to __compare__  multiple targets of measurement at the same time
 
-    -debug
-        * path/file: `target/release/perf-and-dhat-profiling-example`
+> Before must we compile both targets
+>> `cargo build`
+>>
+>> `cargo build release`
+
+* debug
+
+* path/file: `target/release/perf-and-dhat-profiling-example`
 
     -release
+
+* path/file: `target/debug/perf-and-dhat-profiling-example`
+
+:+1:
+
+* run hyperfine testcase
 
 ```bash
 hyperfine --show-output "target/debug/perf-and-dhat-profiling-example
  test.csv" "target/release/perf-and-dhat-profiling-example test.csv"
 ```
+
+RESULT: We can see the difference
+
+```bash
+Summary
+  target/release/perf-and-dhat-profiling-example test.csv ran
+    4.59 ± 1.42 times faster than target/debug/perf-and-dhat-profiling-example test.csv
+    ```
+
+
 
 ### test perf stat s. [webpage](https://www.justanotherdot.com/posts/profiling-with-perf-and-dhat-on-rust-code-in-linux.html) and look for "Describing key metrics with perf stat"
 
