@@ -96,7 +96,7 @@ echo $RUSTFLAGS
 * We use the tool hyperfine to __compare__  multiple targets of measurement at the same time
 
     -debug
-        * path/file: ```target/release/perf-and-dhat-profiling-example```
+        * path/file: `target/release/perf-and-dhat-profiling-example`
 
     -release
 
