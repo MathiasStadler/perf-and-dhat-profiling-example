@@ -102,11 +102,11 @@ echo $RUSTFLAGS
 
 * debug
 
-* path/file: `target/release/perf-and-dhat-profiling-example`
+    -path/file: `target/release/perf-and-dhat-profiling-example`
 
-    -release
+* release
 
-* path/file: `target/debug/perf-and-dhat-profiling-example`
+    -path/file: `target/debug/perf-and-dhat-profiling-example`
 
 :+1:
 
